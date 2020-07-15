@@ -43,7 +43,7 @@ public class ParkingHelper {
         }
         return false;
     }
-    public static ParkingSpace getParkingSpace(String parkingNum, Integer level) {
+    public static ParkingSpace getParkingSpace(Integer parkingNum, Integer level) {
         ParkingSpace parkingSpace = new ParkingSpace();
         parkingSpace.setParkingLevel(level);
         parkingSpace.setParkingNumber(parkingNum);

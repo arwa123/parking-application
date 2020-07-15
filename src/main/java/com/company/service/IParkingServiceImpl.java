@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+
 import static com.company.util.ParkingHelper.getParkingSpace;
 import static com.company.util.ParkingHelper.getParkingSpaceDTO;
 
@@ -71,19 +72,19 @@ public class IParkingServiceImpl implements IParkingService {
             ParkingSpaceDTO freeParkingSpotCurrentRemainingDTO = getParkingSpaceDTO(freeParkingSpotCurrentRemaining, parkingSpaceDTO.getFloorNumber());
             save(getParkingFromDTO(freeParkingSpotCurrentRemainingDTO, null, parkingRequestDto.getParkingType(), parkingRequestDto.getParkingLotId()));
 
-            ParkingSpace freeParkingSpotsPrevUp = getParkingSpace(String.valueOf(Integer.parseInt(parkingSpaceDTO.getParkingNumber()) - 1), 1);
+            ParkingSpace freeParkingSpotsPrevUp = getParkingSpace(parkingSpaceDTO.getParkingNumber() - 1, 1);
             ParkingSpaceDTO freeParkingSpotsPrevUpDTO = getParkingSpaceDTO(freeParkingSpotsPrevUp, parkingSpaceDTO.getFloorNumber());
             save(getParkingFromDTO(freeParkingSpotsPrevUpDTO, null, parkingRequestDto.getParkingType(), parkingRequestDto.getParkingLotId()));
 
-            ParkingSpace freeParkingSpotsPrevDown = getParkingSpace(String.valueOf(Integer.parseInt(parkingSpaceDTO.getParkingNumber()) - 1), 0);
+            ParkingSpace freeParkingSpotsPrevDown = getParkingSpace(parkingSpaceDTO.getParkingNumber() - 1, 0);
             ParkingSpaceDTO freeParkingSpotsPrevDownDTO = getParkingSpaceDTO(freeParkingSpotsPrevDown, parkingSpaceDTO.getFloorNumber());
             save(getParkingFromDTO(freeParkingSpotsPrevDownDTO, null, parkingRequestDto.getParkingType(), parkingRequestDto.getParkingLotId()));
 
-            ParkingSpace freeParkingSpotsNextUp = getParkingSpace(String.valueOf(Integer.parseInt(parkingSpaceDTO.getParkingNumber()) + 1), 1);
+            ParkingSpace freeParkingSpotsNextUp = getParkingSpace(parkingSpaceDTO.getParkingNumber() + 1, 1);
             ParkingSpaceDTO freeParkingSpotsNextUpDTO = getParkingSpaceDTO(freeParkingSpotsNextUp, parkingSpaceDTO.getFloorNumber());
             save(getParkingFromDTO(freeParkingSpotsNextUpDTO, null, parkingRequestDto.getParkingType(), parkingRequestDto.getParkingLotId()));
 
-            ParkingSpace freeParkingSpotsNextDown = getParkingSpace(String.valueOf(Integer.parseInt(parkingSpaceDTO.getParkingNumber()) + 1), 0);
+            ParkingSpace freeParkingSpotsNextDown = getParkingSpace(parkingSpaceDTO.getParkingNumber() + 1, 0);
             ParkingSpaceDTO freeParkingSpotsNextDownDTO = getParkingSpaceDTO(freeParkingSpotsNextDown, parkingSpaceDTO.getFloorNumber());
             save(getParkingFromDTO(freeParkingSpotsNextDownDTO, null, parkingRequestDto.getParkingType(), parkingRequestDto.getParkingLotId()));
 
@@ -100,13 +101,13 @@ public class IParkingServiceImpl implements IParkingService {
             Optional<Parking> parking1 = parkingRepository.findByParkingLotIdAndFloorNumberAndParkingNumberAndParkingLevelAndType(parking.get().getParkingLotId()
                     , parking.get().getFloorNumber(), parking.get().getParkingNumber(), parking.get().getParkingLevel().equals(0) ? 1 : 0, parking.get().getParkingType());
             Optional<Parking> parking2 = parkingRepository.findByParkingLotIdAndFloorNumberAndParkingNumberAndParkingLevelAndType(parking.get().getParkingLotId()
-                    , parking.get().getFloorNumber(), String.valueOf(Integer.parseInt(parking.get().getParkingNumber()) - 1), 1, parking.get().getParkingType());
+                    , parking.get().getFloorNumber(), parking.get().getParkingNumber() - 1, 1, parking.get().getParkingType());
             Optional<Parking> parking3 = parkingRepository.findByParkingLotIdAndFloorNumberAndParkingNumberAndParkingLevelAndType(parking.get().getParkingLotId()
-                    , parking.get().getFloorNumber(), String.valueOf(Integer.parseInt(parking.get().getParkingNumber()) - 1), 0, parking.get().getParkingType());
+                    , parking.get().getFloorNumber(), parking.get().getParkingNumber() - 1, 0, parking.get().getParkingType());
             Optional<Parking> parking4 = parkingRepository.findByParkingLotIdAndFloorNumberAndParkingNumberAndParkingLevelAndType(parking.get().getParkingLotId()
-                    , parking.get().getFloorNumber(), String.valueOf(Integer.parseInt(parking.get().getParkingNumber()) + 1), 1, parking.get().getParkingType());
+                    , parking.get().getFloorNumber(), parking.get().getParkingNumber() + 1, 1, parking.get().getParkingType());
             Optional<Parking> parking5 = parkingRepository.findByParkingLotIdAndFloorNumberAndParkingNumberAndParkingLevelAndType(parking.get().getParkingLotId()
-                    , parking.get().getFloorNumber(), String.valueOf(Integer.parseInt(parking.get().getParkingNumber()) + 1), 0, parking.get().getParkingType());
+                    , parking.get().getFloorNumber(), parking.get().getParkingNumber() + 1, 0, parking.get().getParkingType());
             parking1.get().setEndTime(new Date().getTime());
             parking2.get().setEndTime(new Date().getTime());
             parking3.get().setEndTime(new Date().getTime());

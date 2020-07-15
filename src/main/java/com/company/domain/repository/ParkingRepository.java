@@ -29,6 +29,6 @@ public interface ParkingRepository extends JpaRepository<Parking, Long> {
 
     @Query("SELECT p FROM Parking p where p.parkingLotId = :parkingLotId AND p.floorNumber = :floorNumber AND p.parkingNumber = :parkingNumber AND p.parkingLevel = :parkingLevel AND p.parkingType = :parkingType")
     Optional<Parking> findByParkingLotIdAndFloorNumberAndParkingNumberAndParkingLevelAndType(@Param("parkingLotId") Long parkingLotId,
-                                                                                            @Param("floorNumber") Integer floorNumber, @Param("parkingNumber") String parkingNumber, @Param("parkingLevel") Integer parkingLevel, @Param("parkingType") ParkingType parkingType);
+                                                                                            @Param("floorNumber") Integer floorNumber, @Param("parkingNumber") Integer parkingNumber, @Param("parkingLevel") Integer parkingLevel, @Param("parkingType") ParkingType parkingType);
 
 }

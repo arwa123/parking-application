@@ -28,7 +28,7 @@ public class Parking {
     Vehicle vehicle;
 
     @Column
-    String parkingNumber;
+    Integer parkingNumber;
 
     @Column
     Integer parkingLevel;

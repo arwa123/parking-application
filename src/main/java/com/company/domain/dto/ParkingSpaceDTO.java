@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ParkingSpaceDTO {
 
-    private String parkingNumber;
+    private Integer parkingNumber;
     private Integer parkingLevel;
     private Integer floorNumber;
 

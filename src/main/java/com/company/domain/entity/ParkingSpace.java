@@ -20,7 +20,7 @@ public class ParkingSpace {
     private Long id;
 
     @Column
-    private String parkingNumber;
+    private Integer parkingNumber;
 
     @Column
     private Integer parkingLevel;
