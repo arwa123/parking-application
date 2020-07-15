@@ -10,7 +10,7 @@ import com.company.domain.entity.ParkingSpace;
 import java.util.List;
 import java.util.Set;
 
-import static com.company.util.ParkingHelper.*;
+import static com.company.mapper.MapperUtil.*;
 
 public class NoPreferenceImpl implements IParkingPreference {
     @Override

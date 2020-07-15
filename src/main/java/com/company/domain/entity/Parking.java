@@ -24,7 +24,8 @@ public class Parking {
     @Column
     Long parkingLotId;
 
-    @OneToOne(cascade = CascadeType.ALL) @JsonManagedReference
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference
     Vehicle vehicle;
 
     @Column

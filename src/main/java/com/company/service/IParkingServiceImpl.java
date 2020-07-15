@@ -19,8 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-import static com.company.util.ParkingHelper.getParkingSpace;
-import static com.company.util.ParkingHelper.getParkingSpaceDTO;
+import static com.company.mapper.MapperUtil.*;
 
 @Service
 public class IParkingServiceImpl implements IParkingService {

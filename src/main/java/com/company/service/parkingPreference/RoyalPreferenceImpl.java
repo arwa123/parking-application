@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.company.util.ParkingHelper.*;
+import static com.company.mapper.MapperUtil.*;
 
 public class RoyalPreferenceImpl implements IParkingPreference {
 
